@@ -23,24 +23,29 @@
         <div class="f-row">
           <div class="f-group">
             <label>Nombre</label>
-            <input type="text" placeholder="Tu nombre" />
+            <input type="text" placeholder="Tu nombre"
+              [(ngModel)]="form.name" name="name" />
           </div>
           <div class="f-group">
             <label>Email</label>
-            <input type="email" placeholder="tu@email.com" />
+            <input type="email" placeholder="tu@email.com"
+              [(ngModel)]="form.email" name="email" />
           </div>
         </div>
         <div class="f-group">
           <label>Asunto</label>
-          <input type="text" placeholder="¿De qué se trata?" />
+          <input type="text" placeholder="¿De qué se trata?"
+            [(ngModel)]="form.subject" name="subject" />
         </div>
         <div class="f-group">
           <label>Mensaje</label>
-          <textarea placeholder="Contame tu proyecto o propuesta..."></textarea>
+          <textarea placeholder="Contame tu proyecto o propuesta..."
+            [(ngModel)]="form.message" name="message"></textarea>
         </div>
-        <button class="f-submit" (click)="onSubmit()">
-          @if (submitted) { ✓ Enviado correctamente }
-          @else            { Enviar mensaje → }
+        <button class="f-submit" [class]="btnClass"
+          [disabled]="status === 'sending'"
+          (click)="onSubmit()">
+          {{ btnLabel }}
         </button>
       </div>
     </div>

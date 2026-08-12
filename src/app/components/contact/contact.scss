@@ -127,10 +127,15 @@
   font-size: .95rem;
   font-weight: 700;
   cursor: none;
-  transition: all .25s;
+  transition: all .3s;
   box-shadow: 0 4px 18px rgba(108,99,255,.35);
 
-  &:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(108,99,255,.5); }
+  &:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(108,99,255,.5); }
+  &:disabled { opacity: .7; cursor: not-allowed; }
+
+  &.sending { background: linear-gradient(135deg, #475569, #334155); box-shadow: none; }
+  &.success { background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 18px rgba(16,185,129,.35); }
+  &.error-state { background: linear-gradient(135deg, #ef4444, #dc2626); box-shadow: 0 4px 18px rgba(239,68,68,.35); }
 }
 
 @media (max-width: 768px) {
