@@ -42,6 +42,14 @@ export class ProjectsComponent implements AfterViewInit {
       demoUrl: '#',
       githubUrl: '#',
     },
+    {
+      num: '04',
+      name: 'Dev Room 3D',
+      desc: 'Oficina virtual interactiva construida con Three.js y Angular. Caminás por el cuarto, clickeás objetos para explorar el stack técnico y proyectos, con modo oscuro y lluvia en las ventanas.',
+      tags: ['Three.js', 'Angular', 'WebGL', '3D'],
+      demoUrl: '#',
+      githubUrl: 'https://github.com/santistani13/cuarto-3d',
+    },
   ];
 
   constructor(@Inject(PLATFORM_ID) private platformId: object) {}
