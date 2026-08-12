@@ -1,0 +1,33 @@
+<section id="tech-stack">
+  <div class="container">
+    <p class="s-label rv">03 — tecnologías</p>
+    <h2 class="s-title rv">Mi <span class="hl">stack completo</span></h2>
+
+    <div class="categories-grid">
+      @for (cat of categories; track cat.title) {
+        <div class="cat-card rv">
+          <div class="cat-header">
+            <span class="cat-emoji">{{ cat.emoji }}</span>
+            <h3 class="cat-title">{{ cat.title }}</h3>
+          </div>
+          <div class="icons-grid">
+            @for (tech of cat.techs; track tech.name) {
+              <div class="tech-item">
+                <div class="icon-wrap">
+                  <img
+                    [src]="iconUrl(tech.slug, tech.color)"
+                    [alt]="tech.name"
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+                  />
+                  <span class="icon-fallback" style="display:none">{{ tech.name[0] }}</span>
+                </div>
+                <span class="tech-label">{{ tech.name }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

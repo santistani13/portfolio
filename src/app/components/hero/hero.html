@@ -20,7 +20,7 @@
     </h1>
 
     <p class="hero-role">
-      <span>{{ typedText }}</span><span class="caret"></span>
+      <span>{{ typedText() }}</span><span class="caret"></span>
     </p>
 
     <p class="hero-desc">
@@ -30,12 +30,6 @@
     </p>
 
     <div class="hero-ctas">
-      <button class="btn btn-primary" (click)="scrollTo('projects')">
-        Ver mi trabajo
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </button>
       <a href="mailto:santiagostanicio13@gmail.com" class="btn btn-ghost">
         santiagostanicio13&#64;gmail.com
       </a>

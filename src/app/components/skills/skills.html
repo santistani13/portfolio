@@ -1,31 +1,44 @@
 <section id="skills">
   <div class="container">
     <p class="s-label rv">02 — skills</p>
-    <h2 class="s-title rv">Mi <span class="hl">stack</span></h2>
+    <h2 class="s-title rv">Tecnologías que <span class="hl">domino</span></h2>
 
-    <div class="skills-layout">
-      <div class="skill-list rv-l">
-        @for (skill of skills; track skill.name) {
-          <div class="skill-row">
-            <div class="skill-row-top">
-              <span class="skill-name">{{ skill.name }}</span>
-              <span class="skill-pct">{{ skill.pct }}%</span>
-            </div>
-            <div class="skill-track">
-              <div class="skill-fill" [attr.data-w]="skill.pct"></div>
-            </div>
-          </div>
-        }
+    <!-- Angular version highlight cards -->
+    <div class="angular-cards rv">
+      <div class="angular-card legacy">
+        <div class="ang-header">
+          <img class="ang-icon" src="https://cdn.simpleicons.org/angular/DD0031" alt="Angular" />
+          <span class="ang-badge">≤17</span>
+        </div>
+        <h4>Angular ≤17</h4>
+        <p>NgModules, decorators, lifecycle hooks, ChangeDetection OnPush, integración con RxJS, lazy loading, guards, resolvers</p>
+        <div class="ang-tags">
+          <span>NgModule</span><span>RxJS</span><span>OnPush</span><span>Decorators</span>
+        </div>
       </div>
 
-      <div class="tech-cloud rv">
-        @for (chip of chips; track chip.label) {
-          <div class="tech-chip">
-            <span class="tc-dot" [style.background]="chip.color"></span>
-            {{ chip.label }}
-          </div>
-        }
+      <div class="angular-card signals">
+        <div class="ang-header">
+          <img class="ang-icon" src="https://cdn.simpleicons.org/angular/6c63ff" alt="Angular" />
+          <span class="ang-badge new">+17 · Signals</span>
+        </div>
+        <h4>Angular +17 · Signals</h4>
+        <p>Signals, computed, effect, toSignal/toObservable, &#64;defer, &#64;for, &#64;if — reactividad granular sin Zone.js</p>
+        <div class="ang-tags">
+          <span>Signals</span><span>computed</span><span>effect</span><span>&#64;defer</span>
+        </div>
       </div>
+    </div>
+
+    <!-- Tech chips -->
+    <h3 class="tech-sub rv">Otras tecnologías</h3>
+    <div class="tech-cloud rv">
+      @for (chip of techList; track chip.label) {
+        <div class="tech-chip">
+          <span class="tc-dot" [style.background]="chip.color"></span>
+          {{ chip.label }}
+        </div>
+      }
     </div>
   </div>
 </section>

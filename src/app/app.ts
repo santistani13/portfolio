@@ -5,6 +5,7 @@ import { HeroComponent }       from './components/hero/hero';
 import { MarqueeComponent }    from './components/marquee/marquee';
 import { AboutComponent }      from './components/about/about';
 import { SkillsComponent }     from './components/skills/skills';
+import { TechStackComponent }  from './components/tech-stack/tech-stack';
 import { ResponsiveComponent }  from './components/responsive/responsive';
 import { ProjectsComponent }   from './components/projects/projects';
 import { ExperienceComponent } from './components/experience/experience';
@@ -20,6 +21,7 @@ import { ContactComponent }    from './components/contact/contact';
     MarqueeComponent,
     AboutComponent,
     SkillsComponent,
+    TechStackComponent,
     ResponsiveComponent,
     ProjectsComponent,
     ExperienceComponent,
