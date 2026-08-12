@@ -1,0 +1,14 @@
+<nav [class.scrolled]="scrolled">
+  <a class="nav-logo" (click)="scrollTo('hero')">santi<em>.</em>dev</a>
+  <ul class="nav-links">
+    @for (link of links; track link.href) {
+      <li>
+        <a
+          (click)="scrollTo(link.href)"
+          [class.active]="activeSection === link.href">
+          <span class="n">{{ link.n }}</span> {{ link.label }}
+        </a>
+      </li>
+    }
+  </ul>
+</nav>

@@ -1,0 +1,9 @@
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    @for (item of allItems; track $index) {
+      <span class="marquee-item">
+        <span class="mi-dot">◆</span> {{ item }}
+      </span>
+    }
+  </div>
+</div>

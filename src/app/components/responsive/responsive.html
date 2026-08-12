@@ -1,0 +1,106 @@
+<section id="responsive-section">
+  <div class="resp-sticky">
+
+    <!-- Left: label -->
+    <div class="resp-left">
+      <p class="resp-eyebrow">// feature</p>
+      <h2 class="resp-title">
+        Responsive<br>
+        <span class="resp-hl">by default</span>
+      </h2>
+
+      <div class="resp-phases">
+        <div class="resp-phase" [class.active]="phase === 0">
+          <span class="rp-icon">📱</span>
+          <div>
+            <div class="rp-label">Mobile first</div>
+            <div class="rp-desc">Diseñado desde el dispositivo más pequeño hacia arriba.</div>
+          </div>
+        </div>
+        <div class="resp-phase" [class.active]="phase === 1">
+          <span class="rp-icon">📟</span>
+          <div>
+            <div class="rp-label">Tablet ready</div>
+            <div class="rp-desc">Layouts fluidos que aprovechan el espacio intermedio.</div>
+          </div>
+        </div>
+        <div class="resp-phase" [class.active]="phase === 2">
+          <span class="rp-icon">🖥️</span>
+          <div>
+            <div class="rp-label">Desktop polished</div>
+            <div class="rp-desc">Experiencia completa en pantallas grandes, sin sacrificar nada.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="resp-bar-track">
+        <div class="resp-bar-fill" [style.width.%]="progress * 100"></div>
+      </div>
+      <p class="resp-hint">scrolleá para explorar →</p>
+    </div>
+
+    <!-- Right: devices -->
+    <div class="resp-devices">
+
+      <!-- Phone (always shown) -->
+      <div class="device phone" [style]="phoneStyle">
+        <div class="device-frame">
+          <div class="device-notch"></div>
+          <div class="device-screen">
+            <div class="mock-header"></div>
+            <div class="mock-hero"></div>
+            <div class="mock-cards single">
+              <div class="mock-card"></div>
+              <div class="mock-card"></div>
+            </div>
+          </div>
+          <div class="device-home"></div>
+        </div>
+        <div class="device-label">Mobile</div>
+      </div>
+
+      <!-- Tablet -->
+      <div class="device tablet" [class.visible]="showTablet">
+        <div class="device-frame">
+          <div class="device-camera"></div>
+          <div class="device-screen">
+            <div class="mock-header"></div>
+            <div class="mock-hero short"></div>
+            <div class="mock-cards double">
+              <div class="mock-card"></div>
+              <div class="mock-card"></div>
+              <div class="mock-card"></div>
+            </div>
+          </div>
+        </div>
+        <div class="device-label">Tablet</div>
+      </div>
+
+      <!-- Desktop -->
+      <div class="device desktop" [class.visible]="showDesktop">
+        <div class="device-frame">
+          <div class="device-topbar">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="device-screen">
+            <div class="mock-sidebar"></div>
+            <div class="mock-main">
+              <div class="mock-header"></div>
+              <div class="mock-cards triple">
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="device-stand"></div>
+        <div class="device-base"></div>
+        <div class="device-label">Desktop</div>
+      </div>
+
+    </div><!-- /resp-devices -->
+
+  </div><!-- /resp-sticky -->
+</section>

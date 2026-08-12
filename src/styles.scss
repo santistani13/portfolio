@@ -1,0 +1,187 @@
+/* ── Google Fonts ─────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* ── Tokens ───────────────────────────────────── */
+:root {
+  --bg:      #070b14;
+  --bg2:     #0c1322;
+  --bg3:     #111928;
+  --accent:  #6c63ff;
+  --accent2: #00d4ff;
+  --accent3: #ff6584;
+  --text:    #e2e8f0;
+  --muted:   #64748b;
+  --border:  rgba(108,99,255,.15);
+  --glass:   rgba(12,19,34,.7);
+  --r:       14px;
+  --font:    'Space Grotesk', sans-serif;
+  --mono:    'Space Mono', monospace;
+}
+
+/* ── Reset ────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ── Scrollbar ────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 99px; }
+
+/* ── Grid overlay ─────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(108,99,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108,99,255,.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Layout ───────────────────────────────────── */
+section { position: relative; z-index: 2; }
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── Section labels ───────────────────────────── */
+.s-label {
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--accent);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin-bottom: .6rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 60px;
+  }
+}
+
+.s-title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -.03em;
+  line-height: 1.05;
+
+  .hl {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ── Buttons ──────────────────────────────────── */
+.btn {
+  padding: .75rem 1.8rem;
+  border-radius: 10px;
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: .9rem;
+  cursor: none;
+  transition: all .25s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  border: none;
+
+  &-primary {
+    background: linear-gradient(135deg, var(--accent), #8b5cf6);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(108,99,255,.35);
+
+    &:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(108,99,255,.5); }
+  }
+
+  &-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+
+    &:hover { border-color: var(--accent2); color: var(--accent2); transform: translateY(-2px); }
+  }
+}
+
+/* ── Tags / Pills ─────────────────────────────── */
+.tag {
+  font-family: var(--mono);
+  font-size: .68rem;
+  padding: .2rem .6rem;
+  border-radius: 5px;
+  background: rgba(108,99,255,.1);
+  color: var(--accent);
+  border: 1px solid rgba(108,99,255,.2);
+}
+
+.pill {
+  padding: .35rem .9rem;
+  border-radius: 99px;
+  background: rgba(108,99,255,.1);
+  border: 1px solid rgba(108,99,255,.2);
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--accent2);
+}
+
+/* ── Reveal animations ────────────────────────── */
+.rv {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.23,1,.32,1);
+
+  &.vis { opacity: 1; transform: none; }
+}
+
+.rv-l {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.23,1,.32,1);
+
+  &.vis { opacity: 1; transform: none; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes floatChip {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* ── Glass card base ──────────────────────────── */
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  backdrop-filter: blur(14px);
+}

@@ -1,0 +1,48 @@
+<section id="contact">
+  <div class="container">
+    <p class="s-label rv">05 — contacto</p>
+    <h2 class="s-title rv">¿Hablamos?</h2>
+
+    <div class="contact-grid">
+      <div class="contact-left rv-l">
+        <p class="contact-desc">
+          Estoy abierto a nuevas oportunidades, proyectos freelance o simplemente
+          charlar sobre tecnología. Escribime y te respondo.
+        </p>
+        <div class="contact-list">
+          @for (link of links; track link.label) {
+            <a [href]="link.href" class="c-link" target="_blank">
+              <span class="c-icon">{{ link.icon }}</span>
+              {{ link.label }}
+            </a>
+          }
+        </div>
+      </div>
+
+      <div class="contact-form rv">
+        <div class="f-row">
+          <div class="f-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" />
+          </div>
+          <div class="f-group">
+            <label>Email</label>
+            <input type="email" placeholder="tu@email.com" />
+          </div>
+        </div>
+        <div class="f-group">
+          <label>Asunto</label>
+          <input type="text" placeholder="¿De qué se trata?" />
+        </div>
+        <div class="f-group">
+          <label>Mensaje</label>
+          <textarea placeholder="Contame tu proyecto o propuesta..."></textarea>
+        </div>
+        <button class="f-submit" (click)="onSubmit()">
+          @if (submitted) { ✓ Enviado correctamente }
+          @else            { Enviar mensaje → }
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

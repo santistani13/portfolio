@@ -1,0 +1,46 @@
+<section id="hero">
+  <div class="hero-bg-text">FULLSTACK</div>
+
+  @for (chip of chips; track chip.label) {
+    <div class="hero-chip" [style]="chip.style">
+      <span class="dot" [style.background]="chip.color"></span>
+      {{ chip.label }}
+    </div>
+  }
+
+  <div class="container hero-content">
+    <div class="hero-top-line">
+      <div class="hero-badge">actualmente en BALANZ Capital</div>
+      <div class="hero-line"></div>
+    </div>
+
+    <h1 class="hero-name">
+      Santiago
+      <span class="last">Stanicio</span>
+    </h1>
+
+    <p class="hero-role">
+      <span>{{ typedText }}</span><span class="caret"></span>
+    </p>
+
+    <p class="hero-desc">
+      Más de <strong>5 años</strong> construyendo interfaces complejas y sistemas robustos.
+      Especializado en <strong>Angular</strong>, <strong>TypeScript</strong> y ecosistemas reactivos.
+      Me obsesionan los detalles que la mayoría no nota.
+    </p>
+
+    <div class="hero-ctas">
+      <button class="btn btn-primary" (click)="scrollTo('projects')">
+        Ver mi trabajo
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+      <a href="mailto:santiagostanicio13@gmail.com" class="btn btn-ghost">
+        santiagostanicio13&#64;gmail.com
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">scroll</div>
+</section>

@@ -1,0 +1,31 @@
+<section id="skills">
+  <div class="container">
+    <p class="s-label rv">02 — skills</p>
+    <h2 class="s-title rv">Mi <span class="hl">stack</span></h2>
+
+    <div class="skills-layout">
+      <div class="skill-list rv-l">
+        @for (skill of skills; track skill.name) {
+          <div class="skill-row">
+            <div class="skill-row-top">
+              <span class="skill-name">{{ skill.name }}</span>
+              <span class="skill-pct">{{ skill.pct }}%</span>
+            </div>
+            <div class="skill-track">
+              <div class="skill-fill" [attr.data-w]="skill.pct"></div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="tech-cloud rv">
+        @for (chip of chips; track chip.label) {
+          <div class="tech-chip">
+            <span class="tc-dot" [style.background]="chip.color"></span>
+            {{ chip.label }}
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

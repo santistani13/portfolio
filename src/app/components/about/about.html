@@ -1,0 +1,58 @@
+<section id="about">
+  <div class="container">
+    <p class="s-label rv">01 — about</p>
+    <h2 class="s-title rv">Un poco sobre <span class="hl">mí</span></h2>
+
+    <div class="about-grid">
+      <div class="about-photo-wrap rv-l">
+        <div class="photo-frame">
+          <img src="santiago.jpg" alt="Santiago Stanicio" class="photo" />
+          <div class="photo-overlay"></div>
+        </div>
+        <div class="photo-deco-border"></div>
+        <div class="photo-badge">
+          <span class="badge-dot"></span>
+          Disponible para proyectos
+        </div>
+        <div class="photo-accent-line"></div>
+      </div>
+
+      <div class="about-right">
+        <div class="about-text rv">
+          <p>
+            Soy <strong>Full Stack Developer</strong> con base en Buenos Aires, Argentina.
+            Desde 2021 trabajo en <strong>BALANZ Capital</strong> — una de las fintech de inversiones
+            más grandes del país — donde construyo interfaces de alta exigencia y sistemas backend
+            que manejan datos financieros en tiempo real.
+          </p>
+          <p>
+            Me especializo en el ecosistema Angular (hasta v20) y tengo un ojo entrenado para
+            el detalle visual. Disfruto tanto de diseñar un componente pixel-perfect como de
+            pensar la arquitectura de una API. Y sí, también integro IA cuando tiene sentido.
+          </p>
+          <p>
+            Egresado como <strong>Analista de Sistemas</strong> en ISTEA.
+            Inglés intermedio. Siempre aprendiendo algo nuevo.
+          </p>
+          <div class="about-pills">
+            @for (pill of pills; track pill) {
+              <span class="pill">{{ pill }}</span>
+            }
+          </div>
+        </div>
+
+        <div class="info-cards rv">
+          @for (card of cards; track card.label) {
+            <div class="info-card">
+              <div class="ic-icon">{{ card.icon }}</div>
+              <div>
+                <div class="ic-label">{{ card.label }}</div>
+                <div class="ic-val">{{ card.value }}</div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

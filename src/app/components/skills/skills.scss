@@ -1,0 +1,78 @@
+#skills {
+  padding: 9rem 0 8rem;
+  position: relative;
+}
+
+.skills-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-top: 3rem;
+  align-items: start;
+}
+
+.skill-list { display: flex; flex-direction: column; gap: 1.4rem; }
+
+.skill-row-top {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: .45rem;
+}
+
+.skill-name { font-weight: 600; font-size: .9rem; }
+
+.skill-pct {
+  font-family: var(--mono);
+  font-size: .75rem;
+  color: var(--accent2);
+}
+
+.skill-track {
+  height: 4px;
+  background: rgba(255,255,255,.06);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  border-radius: 99px;
+  width: 0;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transition: width 1.2s cubic-bezier(.23,1,.32,1);
+  box-shadow: 0 0 8px rgba(108,99,255,.5);
+}
+
+.tech-cloud {
+  display: flex; flex-wrap: wrap; gap: .75rem;
+  align-content: flex-start;
+}
+
+.tech-chip {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: .65rem 1rem;
+  font-family: var(--mono);
+  font-size: .78rem;
+  display: flex; align-items: center; gap: .5rem;
+  backdrop-filter: blur(12px);
+  transition: all .25s;
+  cursor: default;
+
+  &:hover {
+    border-color: var(--accent);
+    background: rgba(108,99,255,.1);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(108,99,255,.2);
+  }
+
+  .tc-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+}

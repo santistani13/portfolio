@@ -1,0 +1,165 @@
+#about {
+  padding: 9rem 0 8rem;
+  background: var(--bg2);
+  position: relative;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 5rem;
+  align-items: start;
+  margin-top: 3rem;
+}
+
+/* ── Photo ──────────────────────────────────── */
+.about-photo-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.photo-frame {
+  width: 280px;
+  height: 340px;
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(108,99,255,.25);
+  box-shadow:
+    0 0 0 1px rgba(108,99,255,.1),
+    0 24px 60px rgba(0,0,0,.5),
+    inset 0 0 40px rgba(0,0,0,.3);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform .6s ease;
+  filter: saturate(.9) brightness(.95);
+
+  .photo-frame:hover & {
+    transform: scale(1.03);
+    filter: saturate(1) brightness(1);
+  }
+}
+
+.photo-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 50%, rgba(7,11,20,.7) 100%),
+    linear-gradient(135deg, rgba(108,99,255,.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* floating deco border */
+.photo-deco-border {
+  position: absolute;
+  width: 280px;
+  height: 340px;
+  border: 1px solid rgba(0,212,255,.2);
+  border-radius: 22px;
+  top: 14px;
+  left: calc(50% - 140px + 14px);
+  animation: floatChip 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* available badge */
+.photo-badge {
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  background: var(--glass);
+  border: 1px solid rgba(0,212,255,.25);
+  backdrop-filter: blur(14px);
+  padding: .4rem 1rem;
+  border-radius: 99px;
+  font-family: var(--mono);
+  font-size: .7rem;
+  color: var(--accent2);
+  white-space: nowrap;
+
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent2);
+    animation: blink2 2s infinite;
+  }
+}
+
+@keyframes blink2 {
+  0%,100% { box-shadow: 0 0 0 0 rgba(0,212,255,.5); }
+  50%      { box-shadow: 0 0 0 5px rgba(0,212,255,0); }
+}
+
+/* vertical accent line */
+.photo-accent-line {
+  position: absolute;
+  left: calc(50% - 140px - 18px);
+  top: 10%;
+  width: 2px;
+  height: 60%;
+  background: linear-gradient(180deg, var(--accent), transparent);
+  border-radius: 2px;
+}
+
+/* ── Right col ──────────────────────────────── */
+.about-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: .5rem;
+}
+
+.about-text {
+  p {
+    color: var(--muted);
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    font-size: .95rem;
+
+    strong { color: var(--text); }
+  }
+}
+
+.about-pills {
+  display: flex; flex-wrap: wrap; gap: .5rem;
+  margin-top: 1.5rem;
+}
+
+.info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+.info-card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1rem 1.25rem;
+  backdrop-filter: blur(12px);
+  display: flex; align-items: center; gap: 1rem;
+  transition: border-color .25s, transform .25s;
+
+  &:hover { border-color: var(--accent); transform: translateX(4px); }
+
+  .ic-icon { font-size: 1.2rem; min-width: 1.8rem; text-align: center; }
+  .ic-label { font-size: .68rem; color: var(--muted); font-family: var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+  .ic-val   { font-size: .9rem; font-weight: 600; margin-top: .1rem; }
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 4rem; }
+  .about-photo-wrap { margin-bottom: 1rem; }
+}

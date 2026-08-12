@@ -1,0 +1,44 @@
+<section id="experience">
+  <div class="container">
+    <p class="s-label rv">04 — experiencia</p>
+    <h2 class="s-title rv">Mi <span class="hl">trayectoria</span></h2>
+
+    <div class="exp-layout">
+      <div class="exp-sidebar rv-l">
+        <p class="exp-sidebar-title">Dónde trabajé</p>
+        <div class="exp-nav">
+          @for (job of jobs; track $index) {
+            <button
+              class="exp-nav-item"
+              [class.active]="activeTab === $index"
+              (click)="setTab($index)">
+              {{ job.company.split('·')[0].trim() }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <div class="exp-panel rv">
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">{{ jobs[activeTab].role }}</div>
+              <div class="exp-co">{{ jobs[activeTab].company }}</div>
+            </div>
+            <span class="exp-period">{{ jobs[activeTab].period }}</span>
+          </div>
+          <ul class="exp-desc">
+            @for (bullet of jobs[activeTab].bullets; track $index) {
+              <li>{{ bullet }}</li>
+            }
+          </ul>
+          <div class="exp-tech">
+            @for (t of jobs[activeTab].tech; track t) {
+              <span class="exp-tag">{{ t }}</span>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

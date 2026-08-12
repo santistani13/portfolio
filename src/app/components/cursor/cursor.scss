@@ -1,0 +1,25 @@
+#cur {
+  position: fixed;
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  transition: transform .08s;
+}
+
+#curR {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(108,99,255,.45);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: width .3s, height .3s, opacity .3s;
+}
+
+:host-context(body:has(a:hover)) #curR,
+:host-context(body:has(button:hover)) #curR {
+  width: 52px; height: 52px; opacity: .5;
+}
