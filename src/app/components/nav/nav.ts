@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 export class NavComponent {
   scrolled = false;
   activeSection = 'hero';
+  menuOpen = false;
 
   readonly links = [
     { n: '01.', label: 'sobre mí',    href: 'about'      },
@@ -39,5 +40,10 @@ export class NavComponent {
 
   scrollTo(id: string): void {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    this.menuOpen = false;
+  }
+
+  toggleMenu(): void {
+    this.menuOpen = !this.menuOpen;
   }
 }
