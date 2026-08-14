@@ -137,6 +137,15 @@
   animation: fadeUp .6s .4s ease both;
 }
 
+.btn-room .room-icon {
+  display: inline-block;
+  transition: transform .3s ease;
+}
+
+.btn-room:hover .room-icon {
+  transform: translateY(-2px) rotate(-8deg);
+}
+
 .hero-scroll {
   position: absolute;
   bottom: 2.5rem; right: 3rem;

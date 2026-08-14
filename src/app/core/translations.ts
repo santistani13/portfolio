@@ -24,6 +24,7 @@ export const translations = {
         'Over ', '5 years', ' building complex interfaces and robust systems. Specialized in ',
         'Angular', ', ', 'TypeScript', ' and reactive ecosystems. I obsess over the details most people miss.',
       ],
+      enterRoom: 'Enter my room',
       scroll: 'scroll',
     },
     about: {
@@ -159,6 +160,7 @@ export const translations = {
         'Más de ', '5 años', ' construyendo interfaces complejas y sistemas robustos. Especializado en ',
         'Angular', ', ', 'TypeScript', ' y ecosistemas reactivos. Me obsesionan los detalles que la mayoría no nota.',
       ],
+      enterRoom: 'Entrá a mi cuarto',
       scroll: 'scroll',
     },
     about: {
