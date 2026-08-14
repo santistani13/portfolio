@@ -1,10 +1,10 @@
 <section id="projects">
   <div class="container">
-    <p class="s-label rv">04 — proyectos</p>
-    <h2 class="s-title rv">Trabajos <span class="hl">destacados</span></h2>
+    <p class="s-label rv">{{ t().label }}</p>
+    <h2 class="s-title rv">{{ t().titlePrefix }}<span class="hl">{{ t().titleHl }}</span></h2>
 
     <div class="projects-grid">
-      @for (p of projects; track p.num) {
+      @for (p of projects(); track p.num) {
         <div class="p-card rv">
           <div class="p-num">{{ p.num }}</div>
           <div class="p-body">
@@ -21,7 +21,7 @@
               <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
               </svg>
-              Ver proyecto
+              {{ t().viewProject }}
             </a>
             <a [href]="p.githubUrl" class="p-link" target="_blank">
               <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24">

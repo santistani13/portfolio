@@ -1,8 +1,10 @@
 import {
   Component, AfterViewInit, OnDestroy,
-  PLATFORM_ID, Inject, ChangeDetectorRef, ChangeDetectionStrategy
+  PLATFORM_ID, Inject, ChangeDetectorRef, ChangeDetectionStrategy, computed
 } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
+import { LanguageService } from '../../core/language';
+import { translations } from '../../core/translations';
 
 @Component({
   selector: 'app-responsive',
@@ -19,11 +21,14 @@ export class ResponsiveComponent implements AfterViewInit, OnDestroy {
   showTablet = false;
   showDesktop = false;
 
+  readonly t = computed(() => translations[this.lang.lang()].responsive);
+
   private scrollFn!: () => void;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     private cdr: ChangeDetectorRef,
+    private lang: LanguageService,
   ) {}
 
   ngAfterViewInit(): void {

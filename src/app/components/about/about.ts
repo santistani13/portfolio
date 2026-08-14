@@ -1,5 +1,7 @@
-import { Component, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, AfterViewInit, PLATFORM_ID, Inject, computed } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { LanguageService } from '../../core/language';
+import { translations } from '../../core/translations';
 
 @Component({
   selector: 'app-about',
@@ -8,22 +10,12 @@ import { isPlatformBrowser } from '@angular/common';
   styleUrl: './about.scss'
 })
 export class AboutComponent implements AfterViewInit {
-  readonly pills = [
-    'Buenos Aires 🇦🇷',
-    'Open to opportunities',
-    'Analista de Sistemas',
-    'Inglés intermedio',
-  ];
+  readonly t = computed(() => translations[this.lang.lang()].about);
 
-  readonly cards = [
-    { icon: '🏢', label: 'Empresa actual',  value: 'BALANZ Capital'                          },
-    { icon: '📅', label: 'Experiencia',      value: '+5 años (Mar 2021 — presente)'           },
-    { icon: '🎓', label: 'Educación',         value: 'Analista de Sistemas · ISTEA (2022–2024)' },
-    { icon: '⚡', label: 'Foco principal',   value: 'Angular · TypeScript · NestJS'           },
-    { icon: '📍', label: 'Ubicación',         value: 'Santos Lugares, Buenos Aires'            },
-  ];
-
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object,
+    private lang: LanguageService,
+  ) {}
 
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;

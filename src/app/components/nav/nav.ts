@@ -1,5 +1,7 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LanguageService, Lang } from '../../core/language';
+import { translations } from '../../core/translations';
 
 @Component({
   selector: 'app-nav',
@@ -13,13 +15,11 @@ export class NavComponent {
   activeSection = 'hero';
   menuOpen = false;
 
-  readonly links = [
-    { n: '01.', label: 'sobre mí',    href: 'about'      },
-    { n: '02.', label: 'skills',      href: 'skills'     },
-    { n: '03.', label: 'proyectos',   href: 'projects'   },
-    { n: '04.', label: 'experiencia', href: 'experience' },
-    { n: '05.', label: 'contacto',    href: 'contact'    },
-  ];
+  readonly t = computed(() => translations[this.lang.lang()].nav);
+  readonly links = computed(() => this.t().links);
+  readonly currentLang = computed(() => this.lang.lang());
+
+  constructor(private lang: LanguageService) {}
 
   @HostListener('window:scroll')
   onScroll(): void {
@@ -45,5 +45,9 @@ export class NavComponent {
 
   toggleMenu(): void {
     this.menuOpen = !this.menuOpen;
+  }
+
+  setLang(l: Lang): void {
+    this.lang.set(l);
   }
 }

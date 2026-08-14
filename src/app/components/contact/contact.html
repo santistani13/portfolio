@@ -1,16 +1,15 @@
 <section id="contact">
   <div class="container">
-    <p class="s-label rv">06 — contacto</p>
-    <h2 class="s-title rv">Contactame</h2>
+    <p class="s-label rv">{{ t().label }}</p>
+    <h2 class="s-title rv">{{ t().title }}</h2>
 
     <div class="contact-grid">
       <div class="contact-left rv-l">
         <p class="contact-desc">
-          Estoy abierto a nuevas oportunidades, proyectos freelance o simplemente
-          charlar sobre tecnología. Escribime y te respondo.
+          {{ t().desc }}
         </p>
         <div class="contact-list">
-          @for (link of links; track link.label) {
+          @for (link of links(); track link.label) {
             <a [href]="link.href" class="c-link" target="_blank">
               <span class="c-icon">{{ link.icon }}</span>
               {{ link.label }}
@@ -22,24 +21,24 @@
       <div class="contact-form rv">
         <div class="f-row">
           <div class="f-group">
-            <label>Nombre</label>
-            <input type="text" placeholder="Tu nombre"
+            <label>{{ t().form.name }}</label>
+            <input type="text" [placeholder]="t().form.namePh"
               [(ngModel)]="form.name" name="name" />
           </div>
           <div class="f-group">
-            <label>Email</label>
-            <input type="email" placeholder="tu@email.com"
+            <label>{{ t().form.email }}</label>
+            <input type="email" [placeholder]="t().form.emailPh"
               [(ngModel)]="form.email" name="email" />
           </div>
         </div>
         <div class="f-group">
-          <label>Asunto</label>
-          <input type="text" placeholder="¿De qué se trata?"
+          <label>{{ t().form.subject }}</label>
+          <input type="text" [placeholder]="t().form.subjectPh"
             [(ngModel)]="form.subject" name="subject" />
         </div>
         <div class="f-group">
-          <label>Mensaje</label>
-          <textarea placeholder="Contame tu proyecto o propuesta..."
+          <label>{{ t().form.message }}</label>
+          <textarea [placeholder]="t().form.messagePh"
             [(ngModel)]="form.message" name="message"></textarea>
         </div>
         <button class="f-submit" [class]="btnClass"

@@ -42,6 +42,36 @@ nav {
   }
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: var(--mono);
+  font-size: .75rem;
+  letter-spacing: .05em;
+  z-index: 101;
+
+  button {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color .2s;
+
+    &:hover { color: var(--text); }
+    &.active { color: var(--accent); }
+  }
+
+  .lang-sep { color: var(--border); }
+}
+
 .nav-toggle {
   display: none;
   flex-direction: column;

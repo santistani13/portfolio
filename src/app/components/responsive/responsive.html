@@ -13,22 +13,22 @@
         <div class="resp-phase" [class.active]="phase === 0">
           <span class="rp-icon">📱</span>
           <div>
-            <div class="rp-label">Mobile first</div>
-            <div class="rp-desc">Diseñado desde el dispositivo más pequeño hacia arriba.</div>
+            <div class="rp-label">{{ t().phases[0].label }}</div>
+            <div class="rp-desc">{{ t().phases[0].desc }}</div>
           </div>
         </div>
         <div class="resp-phase" [class.active]="phase === 1">
           <span class="rp-icon">📟</span>
           <div>
-            <div class="rp-label">Tablet ready</div>
-            <div class="rp-desc">Layouts fluidos que aprovechan el espacio intermedio.</div>
+            <div class="rp-label">{{ t().phases[1].label }}</div>
+            <div class="rp-desc">{{ t().phases[1].desc }}</div>
           </div>
         </div>
         <div class="resp-phase" [class.active]="phase === 2">
           <span class="rp-icon">🖥️</span>
           <div>
-            <div class="rp-label">Desktop polished</div>
-            <div class="rp-desc">Experiencia completa en pantallas grandes, sin sacrificar nada.</div>
+            <div class="rp-label">{{ t().phases[2].label }}</div>
+            <div class="rp-desc">{{ t().phases[2].desc }}</div>
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
       <div class="resp-bar-track">
         <div class="resp-bar-fill" [style.width.%]="progress * 100"></div>
       </div>
-      <p class="resp-hint">scrolleá para explorar →</p>
+      <p class="resp-hint">{{ t().hint }}</p>
     </div>
 
     <!-- Right: devices -->

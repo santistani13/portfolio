@@ -1,5 +1,7 @@
-import { Component, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, AfterViewInit, PLATFORM_ID, Inject, computed } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { LanguageService } from '../../core/language';
+import { translations } from '../../core/translations';
 
 export interface Project {
   num: string;
@@ -17,7 +19,9 @@ export interface Project {
   styleUrl: './projects.scss'
 })
 export class ProjectsComponent implements AfterViewInit {
-  readonly projects: Project[] = [
+  readonly t = computed(() => translations[this.lang.lang()].projects);
+
+  readonly projects = computed<Project[]>(() => [
     // Pendiente de deploy — descomentar cuando esté publicado
     // {
     //   num: '01',
@@ -46,14 +50,17 @@ export class ProjectsComponent implements AfterViewInit {
     {
       num: '01',
       name: 'Dev Room 3D',
-      desc: 'Oficina virtual interactiva construida con Three.js y Angular. Caminás por el cuarto, clickeás objetos para explorar el stack técnico y proyectos, con modo oscuro y lluvia en las ventanas.',
+      desc: this.t().devRoomDesc,
       tags: ['Three.js', 'Angular', 'WebGL', '3D'],
       demoUrl: 'https://cuarto-3d-three-santiago-stanicio.vercel.app/',
       githubUrl: 'https://github.com/santistani13/cuarto-3d',
     },
-  ];
+  ]);
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object,
+    private lang: LanguageService,
+  ) {}
 
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;

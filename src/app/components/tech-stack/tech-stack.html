@@ -1,10 +1,10 @@
 <section id="tech-stack">
   <div class="container">
-    <p class="s-label rv">03 — tecnologías</p>
-    <h2 class="s-title rv">Mi <span class="hl">stack completo</span></h2>
+    <p class="s-label rv">{{ t().label }}</p>
+    <h2 class="s-title rv">{{ t().titlePrefix }}<span class="hl">{{ t().titleHl }}</span></h2>
 
     <div class="categories-grid">
-      @for (cat of categories; track cat.title) {
+      @for (cat of categories(); track cat.title) {
         <div class="cat-card rv">
           <div class="cat-header">
             <span class="cat-emoji">{{ cat.emoji }}</span>

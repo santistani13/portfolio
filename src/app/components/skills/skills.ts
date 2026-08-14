@@ -1,5 +1,7 @@
-import { Component, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, AfterViewInit, PLATFORM_ID, Inject, computed } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { LanguageService } from '../../core/language';
+import { translations } from '../../core/translations';
 
 interface TechChip { label: string; color: string; }
 
@@ -10,6 +12,7 @@ interface TechChip { label: string; color: string; }
   styleUrl: './skills.scss'
 })
 export class SkillsComponent implements AfterViewInit {
+  readonly t = computed(() => translations[this.lang.lang()].skills);
 
   readonly techList: TechChip[] = [
     { label: 'TypeScript',     color: '#3178C6' },
@@ -30,7 +33,10 @@ export class SkillsComponent implements AfterViewInit {
     { label: 'Vercel',         color: 'var(--muted)' },
   ];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object,
+    private lang: LanguageService,
+  ) {}
 
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;

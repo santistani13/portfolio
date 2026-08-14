@@ -1,7 +1,7 @@
 <section id="skills">
   <div class="container">
-    <p class="s-label rv">02 — skills</p>
-    <h2 class="s-title rv">Tecnologías que <span class="hl">domino</span></h2>
+    <p class="s-label rv">{{ t().label }}</p>
+    <h2 class="s-title rv">{{ t().titlePrefix }}<span class="hl">{{ t().titleHl }}</span></h2>
 
     <!-- Angular version highlight cards -->
     <div class="angular-cards rv">
@@ -10,8 +10,8 @@
           <img class="ang-icon" src="https://cdn.simpleicons.org/angular/DD0031" alt="Angular" />
           <span class="ang-badge">≤17</span>
         </div>
-        <h4>Angular ≤17</h4>
-        <p>NgModules, decorators, lifecycle hooks, ChangeDetection OnPush, integración con RxJS, lazy loading, guards, resolvers</p>
+        <h4>{{ t().angularLegacy.heading }}</h4>
+        <p>{{ t().angularLegacy.desc }}</p>
         <div class="ang-tags">
           <span>NgModule</span><span>RxJS</span><span>OnPush</span><span>Decorators</span>
         </div>
@@ -22,8 +22,8 @@
           <img class="ang-icon" src="https://cdn.simpleicons.org/angular/6c63ff" alt="Angular" />
           <span class="ang-badge new">+17 · Signals</span>
         </div>
-        <h4>Angular +17 · Signals</h4>
-        <p>Signals, computed, effect, toSignal/toObservable, &#64;defer, &#64;for, &#64;if — reactividad granular sin Zone.js</p>
+        <h4>{{ t().angularSignals.heading }}</h4>
+        <p>{{ t().angularSignals.desc }}</p>
         <div class="ang-tags">
           <span>Signals</span><span>computed</span><span>effect</span><span>&#64;defer</span>
         </div>
@@ -31,7 +31,7 @@
     </div>
 
     <!-- Tech chips -->
-    <h3 class="tech-sub rv">Otras tecnologías</h3>
+    <h3 class="tech-sub rv">{{ t().otherTech }}</h3>
     <div class="tech-cloud rv">
       @for (chip of techList; track chip.label) {
         <div class="tech-chip">

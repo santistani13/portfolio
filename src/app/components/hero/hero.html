@@ -10,7 +10,7 @@
 
   <div class="container hero-content">
     <div class="hero-top-line">
-      <div class="hero-badge">actualmente en BALANZ Capital</div>
+      <div class="hero-badge">{{ t().badge }}</div>
       <div class="hero-line"></div>
     </div>
 
@@ -24,9 +24,7 @@
     </p>
 
     <p class="hero-desc">
-      Más de <strong>5 años</strong> construyendo interfaces complejas y sistemas robustos.
-      Especializado en <strong>Angular</strong>, <strong>TypeScript</strong> y ecosistemas reactivos.
-      Me obsesionan los detalles que la mayoría no nota.
+      {{ t().descParts[0] }}<strong>{{ t().descParts[1] }}</strong>{{ t().descParts[2] }}<strong>{{ t().descParts[3] }}</strong>{{ t().descParts[4] }}<strong>{{ t().descParts[5] }}</strong>{{ t().descParts[6] }}
     </p>
 
     <div class="hero-ctas">
@@ -36,5 +34,5 @@
     </div>
   </div>
 
-  <div class="hero-scroll">scroll</div>
+  <div class="hero-scroll">{{ t().scroll }}</div>
 </section>

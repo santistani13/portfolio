@@ -1,13 +1,19 @@
-import { Component, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, AfterViewInit, PLATFORM_ID, Inject, computed } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { LanguageService } from '../../core/language';
+import { translations } from '../../core/translations';
 
 export interface Job {
   role: string;
   company: string;
   period: string;
-  bullets: string[];
-  tech: string[];
+  bullets: readonly string[];
+  tech: readonly string[];
 }
+
+const TECH: string[][] = [
+  ['Angular', 'TypeScript', 'RxJS', 'NestJS', 'Node.js', 'SCSS', 'REST APIs', 'AI Integration'],
+];
 
 @Component({
   selector: 'app-experience',
@@ -18,35 +24,22 @@ export interface Job {
 export class ExperienceComponent implements AfterViewInit {
   activeTab = 0;
 
-  readonly jobs: Job[] = [
-    {
-      role: 'Desarrollador Full-Stack',
-      company: 'BALANZ Capital · Inversiones · Buenos Aires',
-      period: 'Mar 2021 — Presente',
-      bullets: [
-        'Desarrollo de aplicaciones web modernas con Angular hasta v20, aplicando buenas prácticas de arquitectura, modularización y escalabilidad.',
-        'Implementación de interfaces responsive y mobile-first con HTML5 y SCSS, asegurando experiencias de usuario óptimas.',
-        'Integración con APIs REST y servicios backend, gestionando flujos asíncronos con RxJS.',
-        'Desarrollo backend con Node.js y NestJS: creación y consumo de APIs robustas.',
-        'Implementación de integraciones con agentes de IA y servicios externos para automatización de procesos.',
-        'Colaboración con equipos de Producto, UX/UI y Backend en definición y diseño de nuevas funcionalidades.',
-        'Participación en decisiones técnicas y arquitectura en proyectos clave del producto.',
-      ],
-      tech: ['Angular', 'TypeScript', 'RxJS', 'NestJS', 'Node.js', 'SCSS', 'REST APIs', 'AI Integration'],
-    },
-    {
-      role: 'Analista de Sistemas',
-      company: 'ISTEA · Formación académica',
-      period: '2022 — 2024',
-      bullets: [
-        'Carrera de Analista de Sistemas con foco en desarrollo de software, bases de datos, análisis y diseño de sistemas.',
-        'Formación complementaria a la experiencia laboral, consolidando fundamentos teóricos de informática y arquitectura de software.',
-      ],
-      tech: ['Análisis de sistemas', 'Bases de datos', 'Arquitectura SW'],
-    },
-  ];
+  readonly t = computed(() => translations[this.lang.lang()].experience);
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
+  readonly jobs = computed<Job[]>(() =>
+    this.t().jobs.map((job, i) => ({
+      role: job.role,
+      company: job.company,
+      period: job.period,
+      bullets: job.bullets,
+      tech: (job as any).tech ?? TECH[i] ?? [],
+    }))
+  );
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object,
+    private lang: LanguageService,
+  ) {}
 
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;

@@ -1,16 +1,7 @@
 <nav [class.scrolled]="scrolled">
   <a class="nav-logo" (click)="scrollTo('hero')">santi<em>.</em>dev</a>
-  <button
-    class="nav-toggle"
-    type="button"
-    [class.open]="menuOpen"
-    (click)="toggleMenu()"
-    [attr.aria-expanded]="menuOpen"
-    aria-label="Abrir menú">
-    <span></span><span></span><span></span>
-  </button>
   <ul class="nav-links" [class.open]="menuOpen">
-    @for (link of links; track link.href) {
+    @for (link of links(); track link.href) {
       <li>
         <a
           (click)="scrollTo(link.href)"
@@ -20,4 +11,20 @@
       </li>
     }
   </ul>
+  <div class="nav-right">
+    <div class="lang-switch" role="group" aria-label="Language selector">
+      <button type="button" [class.active]="currentLang() === 'en'" (click)="setLang('en')">EN</button>
+      <span class="lang-sep">/</span>
+      <button type="button" [class.active]="currentLang() === 'es'" (click)="setLang('es')">ES</button>
+    </div>
+    <button
+      class="nav-toggle"
+      type="button"
+      [class.open]="menuOpen"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen"
+      [attr.aria-label]="t().ariaOpenMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>

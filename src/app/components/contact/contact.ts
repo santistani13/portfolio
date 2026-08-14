@@ -1,6 +1,8 @@
-import { Component, AfterViewInit, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, AfterViewInit, PLATFORM_ID, Inject, computed } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { LanguageService } from '../../core/language';
+import { translations } from '../../core/translations';
 
 const EMAILJS_SERVICE_ID  = 'service_fxoeucl';
 const EMAILJS_TEMPLATE_ID = 'template_tvgfs16';
@@ -18,14 +20,19 @@ export class ContactComponent implements AfterViewInit {
   status: 'idle' | 'sending' | 'success' | 'error' = 'idle';
   private ejsReady = false;
 
-  readonly links = [
+  readonly t = computed(() => translations[this.lang.lang()].contact);
+
+  readonly links = computed(() => [
     { icon: '✉️', label: 'santiagostanicio13@gmail.com', href: 'mailto:santiagostanicio13@gmail.com' },
     { icon: '📱', label: '+54 11 6427 7986',              href: 'tel:+541164277986'                   },
-    { icon: '🐙', label: 'GitHub',                        href: 'https://github.com/santistani13'                                      },
-    { icon: '💼', label: 'LinkedIn',                      href: 'https://www.linkedin.com/in/santiago-stanicio-ba568516b/' },
-  ];
+    { icon: '🐙', label: this.t().linkLabels.github,      href: 'https://github.com/santistani13'                                      },
+    { icon: '💼', label: this.t().linkLabels.linkedin,    href: 'https://www.linkedin.com/in/santiago-stanicio-ba568516b/' },
+  ]);
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object,
+    private lang: LanguageService,
+  ) {}
 
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
@@ -59,7 +66,7 @@ export class ContactComponent implements AfterViewInit {
 
   async onSubmit(): Promise<void> {
     if (!this.form.name || !this.form.email || !this.form.message) return;
-    if (!this.ejsReady) { alert('El servicio de email todavía carga, intentá en un segundo.'); return; }
+    if (!this.ejsReady) { alert(this.t().loadingAlert); return; }
 
     this.status = 'sending';
     try {
@@ -69,7 +76,7 @@ export class ContactComponent implements AfterViewInit {
         {
           from_name:  this.form.name,
           from_email: this.form.email,
-          subject:    this.form.subject || 'Contacto desde el portfolio',
+          subject:    this.form.subject || this.t().defaultSubject,
           message:    this.form.message,
           reply_to:   this.form.email,
         }
@@ -85,7 +92,7 @@ export class ContactComponent implements AfterViewInit {
   }
 
   get btnLabel(): string {
-    return ({ idle: 'Enviar mensaje →', sending: 'Enviando...', success: '✓ Mensaje enviado', error: '✗ Intentá de nuevo' } as any)[this.status];
+    return this.t().btn[this.status];
   }
   get btnClass(): string {
     return ({ idle: '', sending: 'sending', success: 'success', error: 'error-state' } as any)[this.status];

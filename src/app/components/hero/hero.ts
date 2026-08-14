@@ -1,5 +1,7 @@
-import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject, signal } from '@angular/core';
+import { Component, OnDestroy, PLATFORM_ID, Inject, signal, computed, effect } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { LanguageService } from '../../core/language';
+import { translations } from '../../core/translations';
 
 @Component({
   selector: 'app-hero',
@@ -7,15 +9,11 @@ import { isPlatformBrowser } from '@angular/common';
   templateUrl: './hero.html',
   styleUrl: './hero.scss'
 })
-export class HeroComponent implements OnInit, OnDestroy {
+export class HeroComponent implements OnDestroy {
   typedText = signal('');
 
-  private phrases = [
-    'Full Stack Developer',
-    'Especialista en Angular',
-    'Amante del código limpio',
-    'Frontend que cuida los detalles',
-  ];
+  readonly t = computed(() => translations[this.lang.lang()].hero);
+
   private pi = 0;
   private ci = 0;
   private deleting = false;
@@ -28,10 +26,18 @@ export class HeroComponent implements OnInit, OnDestroy {
     { label: 'RxJS',        color: '#22d3ee',         style: 'bottom:22%;left:6%;--dur:6.5s' },
   ];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
-
-  ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) this.type();
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object,
+    private lang: LanguageService,
+  ) {
+    effect(() => {
+      this.t();
+      this.pi = 0;
+      this.ci = 0;
+      this.deleting = false;
+      if (this.timer) clearTimeout(this.timer);
+      if (isPlatformBrowser(this.platformId)) this.type();
+    });
   }
 
   ngOnDestroy(): void {
@@ -39,7 +45,8 @@ export class HeroComponent implements OnInit, OnDestroy {
   }
 
   private type(): void {
-    const ph = this.phrases[this.pi];
+    const phrases = this.t().phrases;
+    const ph = phrases[this.pi];
     if (!this.deleting) {
       this.typedText.set(ph.slice(0, ++this.ci));
       if (this.ci === ph.length) {
@@ -52,7 +59,7 @@ export class HeroComponent implements OnInit, OnDestroy {
       this.typedText.set(ph.slice(0, --this.ci));
       if (this.ci === 0) {
         this.deleting = false;
-        this.pi = (this.pi + 1) % this.phrases.length;
+        this.pi = (this.pi + 1) % phrases.length;
       }
       this.timer = setTimeout(() => this.type(), this.deleting ? 30 : 500);
     }
